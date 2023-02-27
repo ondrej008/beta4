@@ -100,7 +100,7 @@ int main()
     {
         if (cislo_permutace % (pocet_permutaci / 100) == 0)
         {
-            printf("%d%% hotovo\n", cislo_permutace / (pocet_permutaci / 100));
+            printf("%llu%% hotovo\n", cislo_permutace / (pocet_permutaci / 100));
         }
 
         float skore = hodnoceni(mesta, mesta_index);
