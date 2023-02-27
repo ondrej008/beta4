@@ -6,6 +6,8 @@
 
 #include <algorithm>
 #include <vector>
+#include <thread>
+#include <mutex>
 
 
 struct City
@@ -42,6 +44,40 @@ float hodnoceni(std::vector<City>& mesta, std::vector<int>& indexy)
     suma += vzdalenost(mesta[indexy[0]], mesta[indexy[indexy.size() - 1]]);
 
     return suma;
+}
+
+std::vector<int> nejlepsi;
+float nejlepsi_skore = INFINITY;
+std::mutex lock;
+
+void thread_runner(int id, std::vector<City>& mesta, std::vector<int> mesta_index, uint64_t pocet_permutaci)
+{
+    uint64_t cislo_permutace = 0;
+
+    printf("Thread %d %llu", id, pocet_permutaci);
+
+    do
+    {
+        if (cislo_permutace % (pocet_permutaci / 10) == 0)
+        {
+            printf("Thread %d: %llu%% hotovo\n", id, cislo_permutace / (pocet_permutaci / 10));
+        }
+
+        float skore = hodnoceni(mesta, mesta_index);
+
+        if (skore < nejlepsi_skore)
+        {
+            //printf("Lepsi reseni bylo nalezeno, predchozi %f, nove %f\n", nejlepsi_skore, skore);
+            lock.lock();
+            nejlepsi_skore = skore;
+            nejlepsi = mesta_index;
+            lock.unlock();
+        }
+
+        cislo_permutace++;
+    } while (std::next_permutation(mesta_index.begin(), mesta_index.end()) && cislo_permutace < pocet_permutaci);
+
+    
 }
 
 int main()
@@ -91,30 +127,27 @@ int main()
 
     std::sort(mesta_index.begin(), mesta_index.end());
 
-    std::vector<int> nejlepsi;
-    float nejlepsi_skore = INFINITY;
+    unsigned int pocet_threadu = std::thread::hardware_concurrency();
+    //unsigned int pocet_threadu = 1;
 
-    uint64_t cislo_permutace = 0;
+    printf("Pocet threadu na zarizeni je %u, kazdy thread bude pocitat %llu permutaci\n", pocet_threadu, pocet_permutaci / pocet_threadu);
 
-    do
+    std::vector<std::thread> thready;
+
+    for (uint64_t permutace = 0; permutace < pocet_permutaci; permutace++)
     {
-        if (cislo_permutace % (pocet_permutaci / 100) == 0)
+        if (permutace % (pocet_permutaci / pocet_threadu) == 0)
         {
-            printf("%llu%% hotovo\n", cislo_permutace / (pocet_permutaci / 100));
+            thready.push_back(std::thread(thread_runner, thready.size(), std::ref(mesta), mesta_index, (pocet_permutaci / pocet_threadu)));
         }
 
-        float skore = hodnoceni(mesta, mesta_index);
+        std::next_permutation(mesta_index.begin(), mesta_index.end());
+    }
 
-        if (skore < nejlepsi_skore)
-        {
-            printf("Lepsi reseni bylo nalezeno, predchozi %f, nove %f\n", nejlepsi_skore, skore);
-
-            nejlepsi_skore = skore;
-            nejlepsi = mesta_index;
-        }
-
-        cislo_permutace++;
-    } while (std::next_permutation(mesta_index.begin(), mesta_index.end()));
+    for (int i = 0; i < thready.size(); i++)
+    {
+        thready[i].join();
+    }
 
     printf("Nejlepsi reseni s vzdalenosti %f se sklada z:\n", nejlepsi_skore);
 

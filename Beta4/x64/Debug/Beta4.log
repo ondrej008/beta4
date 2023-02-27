@@ -1,7 +1,23 @@
 ﻿  Beta4.cpp
-C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(71,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(103,20): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'uint64_t'
-C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(103,20): message : consider using '%lld' in the format string
-C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(103,20): message : consider using '%Id' in the format string
-C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(103,20): message : consider using '%I64d' in the format string
+C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(107,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\type_traits(1572,67): warning C4244: 'argument': conversion from 'unsigned __int64' to 'int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\thread(51,5): message : see reference to function template instantiation 'void std::invoke<void(__cdecl *)(int,std::vector<City,std::allocator<City>> &,std::vector<int,std::allocator<int>>,uint64_t),unsigned __int64,std::reference_wrapper<std::vector<City,std::allocator<City>>>,std::vector<int,std::allocator<int>>,unsigned __int64>(_Callable &&,_Ty1 &&,std::reference_wrapper<std::vector<City,std::allocator<City>>> &&,std::vector<int,std::allocator<int>> &&,unsigned __int64 &&) noexcept(false)' being compiled
+          with
+          [
+              _Callable=void (__cdecl *)(int,std::vector<City,std::allocator<City>> &,std::vector<int,std::allocator<int>>,uint64_t),
+              _Ty1=unsigned __int64
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\thread(61,5): message : see reference to function template instantiation 'unsigned int std::thread::_Invoke<_Tuple,0,1,2,3,4>(void *) noexcept' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\thread(66,13): message : see reference to function template instantiation 'unsigned int (__cdecl *std::thread::_Get_invoke<_Tuple,0,1,2,3,4>(std::integer_sequence<size_t,0,1,2,3,4>) noexcept)(void *)' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\thread(89,5): message : see reference to function template instantiation 'void std::thread::_Start<void(__cdecl &)(int,std::vector<City,std::allocator<City>> &,std::vector<int,std::allocator<int>>,uint64_t),_Ty,std::reference_wrapper<std::vector<City,std::allocator<City>>>,std::vector<int,std::allocator<int>>&,_Ty>(_Fn,_Ty &&,std::reference_wrapper<std::vector<City,std::allocator<City>>> &&,std::vector<int,std::allocator<int>> &,_Ty &&)' being compiled
+          with
+          [
+              _Ty=unsigned __int64,
+              _Fn=void (__cdecl &)(int,std::vector<City,std::allocator<City>> &,std::vector<int,std::allocator<int>>,uint64_t)
+          ]
+C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(141,137): message : see reference to function template instantiation 'std::thread::thread<void(__cdecl &)(int,std::vector<City,std::allocator<City>> &,std::vector<int,std::allocator<int>>,uint64_t),unsigned __int64,std::reference_wrapper<std::vector<City,std::allocator<City>>>,std::vector<int,std::allocator<int>>&,uint64_t,0>(_Fn,unsigned __int64 &&,std::reference_wrapper<std::vector<City,std::allocator<City>>> &&,std::vector<int,std::allocator<int>> &,uint64_t &&)' being compiled
+          with
+          [
+              _Fn=void (__cdecl &)(int,std::vector<City,std::allocator<City>> &,std::vector<int,std::allocator<int>>,uint64_t)
+          ]
   Beta4.vcxproj -> C:\Users\ondra\Documents\CPPVS\Beta4\x64\Debug\Beta4.exe
