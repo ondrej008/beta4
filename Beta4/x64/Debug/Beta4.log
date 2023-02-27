@@ -1,0 +1,7 @@
+﻿  Beta4.cpp
+C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(71,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(103,20): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'uint64_t'
+C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(103,20): message : consider using '%lld' in the format string
+C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(103,20): message : consider using '%Id' in the format string
+C:\Users\ondra\Documents\CPPVS\Beta4\Beta4\Beta4.cpp(103,20): message : consider using '%I64d' in the format string
+  Beta4.vcxproj -> C:\Users\ondra\Documents\CPPVS\Beta4\x64\Debug\Beta4.exe
